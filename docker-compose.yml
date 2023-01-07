@@ -1,0 +1,20 @@
+version: "3"
+services:
+    www:
+        build: .
+        ports: 
+            - "8001:80"
+        links:
+            - dbsosmed
+    dbsosmed:
+        image: mysql:5.7
+        ports: 
+            - "3306:3306"
+        environment:
+            MYSQL_DATABASE: dbsosmed
+            MYSQL_USER: devopscilsy
+            MYSQL_PASSWORD: 1234567890
+            MYSQL_ROOT_PASSWORD: test
+        volumes:
+          - ./data-mysql:/var/lib/mysql
+
